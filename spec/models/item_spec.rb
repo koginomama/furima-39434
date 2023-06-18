@@ -4,7 +4,7 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-  # bundle exec rspec spec/models/item_spec.rb
+  # チェック用コード bundle exec rspec spec/models/item_spec.rb
   describe '商品新規登録' do
     context '出品ができる場合' do
       it 'item_name, item_info, item_price, item_category_id, item_sales_status_id, item_shipping_fee_status_id, item_prefecture_id, item_scheduled_delivery_id, image,user_idが存在すれば登録できる' do
@@ -79,6 +79,17 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item price is invalid")
       end
 
+      it 'userが紐付いていないと保存できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
+      it 'imageが空では登録できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
     end
   end
 end
