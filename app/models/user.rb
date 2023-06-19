@@ -18,6 +18,6 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX,
                                  message: 'is invalid. Input Including both letters and numbers is required.'
 
-  #has_many :items
+  has_many :items
   #has_many :orders
 end
