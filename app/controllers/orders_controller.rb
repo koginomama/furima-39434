@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   before_action :check_sold_item, only: [:index, :create]
 
   def index
