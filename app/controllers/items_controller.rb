@@ -23,9 +23,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if user_signed_in? && current_user.id == @item.user_id
+    if @item.order.present? && @item.order.item_id == @item.id && user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif user_signed_in? && current_user.id == @item.user_id
 
-    redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   def update

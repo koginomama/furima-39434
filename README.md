@@ -56,7 +56,7 @@
 - belongs_to :item
 - has_one :address
 
-## addresss テーブル
+## addresses テーブル
 | Column             | Type       | Options                       |
 | ------------------ | ------     | ----------------------------- |
 | postal_code        | string     | null: false                   |

@@ -19,5 +19,5 @@ class User < ApplicationRecord
                                  message: 'is invalid. Input Including both letters and numbers is required.'
 
   has_many :items
-  # has_many :orders
+  has_many :orders
 end

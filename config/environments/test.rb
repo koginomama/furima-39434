@@ -5,7 +5,7 @@
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  
+  config.active_job.queue_adapter = :inline #追記
   config.cache_classes = false
 
   # Do not eager load code on boot. This avoids loading your whole application
@@ -18,7 +18,6 @@ Rails.application.configure do
   config.public_file_server.headers = {
     'Cache-Control' => "public, max-age=#{1.hour.to_i}"
   }
-
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
