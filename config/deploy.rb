@@ -34,3 +34,5 @@ end
 
 #mainブランチを参照する
 set :branch, 'main'
+
+set :date, '3.3.3'
