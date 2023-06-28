@@ -28,12 +28,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@order_address.errors.full_messages).to include('Postal code は(-)ハイフンを含めて入力してください')
       end
       it 'prefectureを選択していないと保存できないこと' do
         @order_address.prefecture_id = '0'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_address.errors.full_messages).to include("Prefecture を選択してください")
       end
       it 'cityが空だと保存できないこと' do
         @order_address.city = ''
@@ -53,17 +53,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが全角数字だと保存できないこと' do
         @order_address.phone_number = '１１１１２２２２３３３'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@order_address.errors.full_messages).to include('Phone number は半角数字で入力してください')
       end
       it 'phone_numberが10桁以下の半角数値だと保存できないこと' do
         @order_address.phone_number = '1111'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@order_address.errors.full_messages).to include('Phone number は半角数字で入力してください')
       end
       it 'phone_numberが11桁以上の半角数値だと保存できないこと' do
         @order_address.phone_number = '111122223333'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+        expect(@order_address.errors.full_messages).to include('Phone number は半角数字で入力してください')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil

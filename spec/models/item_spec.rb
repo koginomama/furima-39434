@@ -28,31 +28,31 @@ RSpec.describe Item, type: :model do
       it 'item_category_idが(---)では登録できない' do
         @item.item_category_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item category can't be blank")
+        expect(@item.errors.full_messages).to include("Item category を選択してください")
       end
 
       it 'item_sales_status_idが(---)では登録できない' do
         @item.item_sales_status_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item sales status can't be blank")
+        expect(@item.errors.full_messages).to include("Item sales status を選択してくださ")
       end
 
       it 'item_shipping_fee_status_idが(---)では登録できない' do
         @item.item_shipping_fee_status_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item shipping fee status can't be blank")
+        expect(@item.errors.full_messages).to include("Item shipping fee status を選択してください")
       end
 
       it 'item_prefecture_idが(---)では登録できない' do
         @item.item_prefecture_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Item prefecture を選択してください")
       end
 
       it 'item_scheduled_delivery_idが(---)では登録できない' do
         @item.item_scheduled_delivery_id = '0'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item scheduled delivery can't be blank")
+        expect(@item.errors.full_messages).to include("Item scheduled delivery を選択してください")
       end
 
       it 'item_priceが空では登録できない' do
@@ -64,19 +64,19 @@ RSpec.describe Item, type: :model do
       it 'item_priceが¥300以下では登録できない' do
         @item.item_price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is invalid')
+        expect(@item.errors.full_messages).to include('Item price は半角数字で入力してください')
       end
 
       it 'item_priceが¥9,999,999以上では登録できない' do
         @item.item_price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is invalid')
+        expect(@item.errors.full_messages).to include('Item price は半角数字で入力してください')
       end
 
       it 'item_priceが半角数字意外では登録できない' do
         @item.item_price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item price is invalid')
+        expect(@item.errors.full_messages).to include('Item price は半角数字で入力してください')
       end
 
       it 'userが紐付いていないと保存できない' do
